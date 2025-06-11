@@ -1,0 +1,26 @@
+# Ignorar salidas de compilación
+**/bin/
+**/obj/
+
+# Ignorar configuraciones de usuario
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de bases de datos locales
+*.dbmdl
+
+# Archivos de log
+*.log
+
+# Configuraciones del entorno
+.vscode/
+.vs/
+
+# Otros archivos temporales
+*.tmp
+*.cache
+
+/Back/Hango/wwwroot/uploads/
+
