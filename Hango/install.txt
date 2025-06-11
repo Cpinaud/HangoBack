@@ -1,0 +1,26 @@
+Versiones 
+Framework .NET: 8.0
+EntityFrame : 
+
+
+
+--INSTALL NugetConsole
+Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 8.0.0
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+
+
+--Scaffoldd 
+Scaffold-DbContext "Server=LAPTOP-BAFCLMNN;Database=Hango;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EF -Context HangoContext -UseDatabaseNames -NoPluralize -Force
+
+-cin-
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=Hango;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EF -Context HangoContext -UseDatabaseNames -NoPluralize
+Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=Hango;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir EF -Tables Evento -NoPluralize -Force 
+
+
+-- SWAGGER
+Install-Package Swashbuckle.AspNetCore
+
+
+--Variable global
+setx ConnectionStrings__HangoConnection "Server=(localdb)\MSSQLLocalDB;Database=Hango;Trusted_Connection=True;TrustServerCertificate=True;"

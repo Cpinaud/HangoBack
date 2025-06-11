@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test SignalR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+</head>
+<body>
+    <h1>SignalR Listener</h1>
+    <p id="status">Conectando...</p>
+    <ul id="eventos"></ul>
+
+    <script>
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("http://localhost:5222/hub/eventos") // Cambiá el puerto si tu backend usa otro
+      .build();
+
+    connection.start().then(() => {
+      document.getElementById("status").innerText = "✅ Conectado a SignalR";
+
+      // Unirse al grupo que querés testear (tiene que coincidir con el ID que uses en Swagger)
+      const grupoId = "1";
+      connection.invoke("UnirseAlGrupo", grupoId);
+
+      console.log("Conectado y unido al grupo:", grupoId);
+    });
+
+    connection.on("RecibirEvento", (data) => {
+      console.log("🔥 Evento recibido:", data);
+      const li = document.createElement("li");
+      li.textContent = data;
+      document.getElementById("eventos").appendChild(li);
+    });
+    </script>
+</body>
+</html>
